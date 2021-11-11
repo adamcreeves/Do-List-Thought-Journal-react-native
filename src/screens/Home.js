@@ -1,25 +1,28 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { styling } from "../styles/styling";
 
-export default Home = ({ navigation }) => {
+export default Home = () => {
+  const nav = useNavigation();
   return (
-    <View style={styles.container}>
-      <Text>You made it!</Text>
-      <TouchableOpacity onPress={() => null}>
-        {/*navigation.navigate()*/}
-        <Text>Create a New List</Text>
-      </TouchableOpacity>
+    <View style={styling.container}>
+      <View style={styling.topSubContainer}>
+        <TouchableOpacity
+          style={styling.button}
+          onPress={() => nav.navigate("Create a new Now-it List")}
+        >
+          <Text>Create a New List</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styling.button}
+          onPress={() => nav.navigate("Create a new Now-it Thought")}
+        >
+          <Text>Create a New Thought</Text>
+        </TouchableOpacity>
+      </View>
       <StatusBar style="auto" />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
