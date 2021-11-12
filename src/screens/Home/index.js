@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { styling } from "../styles/styling";
+import { styling } from "../../styles/styling";
 
 export default Home = () => {
   const nav = useNavigation();
