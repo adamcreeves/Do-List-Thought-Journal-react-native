@@ -11,10 +11,10 @@ export default App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Welcome to Now-it" component={Home} />
-        <Stack.Screen name="Create a new Now-it List" component={CreateList} />
+        <Stack.Screen name="Welcome to now-it" component={Home} />
+        <Stack.Screen name="Create a new now-it list" component={CreateList} />
         <Stack.Screen
-          name="Create a new Now-it Thought"
+          name="Create a new now-it thought"
           component={CreateThought}
         />
       </Stack.Navigator>

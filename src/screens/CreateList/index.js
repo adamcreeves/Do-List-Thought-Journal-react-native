@@ -1,12 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { Text, View } from "react-native";
-import { styling } from "../../styles/styling";
+import { styles } from "../../styles";
 
 export default CreateList = () => {
   return (
-    <View style={styling.container}>
-      <Text>Create a new Not-it List here!</Text>
+    <View style={styles.container}>
+      <Text>Lets get started!</Text>
       <StatusBar style="auto" />
     </View>
   );
