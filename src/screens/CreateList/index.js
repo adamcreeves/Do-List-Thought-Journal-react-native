@@ -1,15 +1,15 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  SafeAreaView,
-  TouchableOpacity,
-  Image,
-  Keyboard,
-} from "react-native";
+import { View, Text, SafeAreaView, TouchableOpacity } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
-import ListEntryContainer from "../../components/ListEntryContainer";
+import AddEntryContainer from "../../components/AddEntryContainer";
+import { ListBody } from "../../components/ListBody";
+import RenderListTitle from "../../components/RenderListTitle";
+import {
+  createListButtonFunc,
+  addListItem,
+  addTitle,
+} from "../../components/Utils";
 import { styles } from "../../styles";
 
 export default CreateList = () => {
@@ -18,85 +18,33 @@ export default CreateList = () => {
   const [listItems, setListItems] = useState([]);
   const placeholder = listName ? "Enter a task" : "Name your list";
 
-  const addTitle = () => {
-    if (listEntryText) {
-      Keyboard.dismiss();
-      setListName(listEntryText);
-      setListEntryText("");
-    } else {
-      alert("You need to name your list");
-    }
-  };
+  const renderList = ({ item }) => ListBody(item, setListItems, listItems);
 
-  const addListItem = () => {
-    if (!listItems.includes(listEntryText)) {
-      Keyboard.dismiss();
-      setListItems([listEntryText, ...listItems]);
-      setListEntryText("");
-    } else if (listEntryText === "") {
-      alert("Enter a task to add it to your list");
-    } else {
-      alert("You already added that task to your list");
-    }
-  };
+  const addTitleFunc = () =>
+    addTitle(listEntryText, setListName, setListEntryText);
 
-  const renderList = ({ item }) => {
-    return (
-      <View
-        style={{
-          width: 220,
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
-      >
-        <Text
-          style={{
-            color: "black",
-            flexDirection: "row",
-            width: 190,
-            marginVertical: 3,
-            fontSize: 18,
-          }}
-        >
-          {"\u25CF  " + item}
-        </Text>
-        <TouchableOpacity
-          onPress={() => setListItems(listItems.filter((x) => x !== item))}
-          style={{
-            alignItems: "center",
-            justifyContent: "center",
-            marginHorizontal: 6,
-          }}
-        >
-          <Image source={require("../../../assets/deleteicon.png")} />
-        </TouchableOpacity>
-      </View>
-    );
-  };
+  const addTaskFunc = () =>
+    addListItem(listEntryText, listItems, setListItems, setListEntryText);
 
-  const createListBtnFunc = () => {
-    if (!listName) {
-      alert("Whoops! You forgot to name your list");
-    } else if (!listItems.length) {
-      alert("Whoops! You forgot to add one or more tasks to your list");
-    } else {
-      alert("Your list has been created");
-      console.log("This is the list: ", [listName, listItems]);
-    }
-  };
+  const submitList = () => createListButtonFunc(listName, listItems);
+
+  const mainViewStyle =
+    listName || listItems.length
+      ? styles.container
+      : [styles.container, { justifyContent: "center" }];
 
   return (
-    <View style={styles.container}>
+    <View style={mainViewStyle}>
       <StatusBar style="auto" />
-      <ListEntryContainer
+      <AddEntryContainer
         containerStyle={styles.listBodyContainer}
         listEntryStyle={styles.listEntry}
         placeholderText={placeholder}
         setListFunc={setListEntryText}
         listEntryValue={listEntryText}
-        onSubmitEditing={!listName ? addTitle : addListItem}
+        onSubmitEditing={!listName ? addTitleFunc : addTaskFunc}
         buttonStyle={[styles.button, styles.listEntryButton]}
-        buttonFunc={!listName ? addTitle : addListItem}
+        buttonFunc={!listName ? addTitleFunc : addTaskFunc}
         buttonTextStyle={styles.listEntryButtonText}
         buttonText={"Next"}
       />
@@ -123,32 +71,10 @@ export default CreateList = () => {
                 List Preview:
               </Text>
               {listName !== "" ? (
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    marginVertical: 6,
-                  }}
-                >
-                  <Text
-                    style={{
-                      fontSize: 23,
-                      fontWeight: "bold",
-                      textDecorationLine: "underline",
-                    }}
-                  >
-                    {listName}
-                  </Text>
-                  <TouchableOpacity
-                    style={{ marginLeft: 10 }}
-                    onPress={() => setListName("")}
-                  >
-                    <Image
-                      style={{ height: 18, width: 18 }}
-                      source={require("../../../assets/pencil.png")}
-                    />
-                  </TouchableOpacity>
-                </View>
+                <RenderListTitle
+                  listName={listName}
+                  setListName={setListName}
+                />
               ) : null}
             </View>
             {listItems.length ? (
@@ -164,7 +90,7 @@ export default CreateList = () => {
           </View>
           <TouchableOpacity
             style={[styles.button, { width: "100%", marginHorizontal: 0 }]}
-            onPress={createListBtnFunc}
+            onPress={submitList}
           >
             <Text style={styles.listEntryButtonText}>Create List</Text>
           </TouchableOpacity>

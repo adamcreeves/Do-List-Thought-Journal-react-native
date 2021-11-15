@@ -1,7 +1,7 @@
 import React from "react";
 import { TextInput } from "react-native";
 
-export default ListEntry = ({
+export default AddEntry = ({
   inputStyle,
   placeholderText,
   setText,

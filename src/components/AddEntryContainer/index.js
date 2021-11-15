@@ -1,8 +1,8 @@
 import React from "react";
 import { View, TouchableOpacity, Text } from "react-native";
-import ListEntry from "../ListEntry";
+import AddEntry from "../AddEntry";
 
-export default ListEntryContainer = ({
+export default AddEntryContainer = ({
   containerStyle,
   listEntryStyle,
   placeholderText,
@@ -16,7 +16,7 @@ export default ListEntryContainer = ({
 }) => {
   return (
     <View style={containerStyle}>
-      <ListEntry
+      <AddEntry
         inputStyle={listEntryStyle}
         placeholderText={placeholderText}
         setText={setListFunc}
