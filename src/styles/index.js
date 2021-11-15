@@ -24,6 +24,15 @@ export const styles = StyleSheet.create({
     backgroundColor: "skyblue",
     marginHorizontal: 3,
   },
+  createListMain: {
+    borderWidth: 1,
+    borderColor: "black",
+    borderRadius: 5,
+    height: 440,
+    width: "100%",
+    marginVertical: 15,
+    alignItems: "center",
+  },
   listBodyContainer: {
     width: "90%",
     height: 160,
@@ -51,4 +60,11 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 18,
   },
+  width90: { width: "90%" },
+  listPreviewText: {
+    marginTop: 10,
+    fontSize: 25,
+  },
+  submitBtnExtra: { width: "100%", marginHorizontal: 0 },
+  centerAlign: { alignItems: "center" },
 });

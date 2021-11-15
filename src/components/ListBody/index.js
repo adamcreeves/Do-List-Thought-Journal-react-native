@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 
-export const ListBody = (item, setListItems, listItems) => {
+export default ListBody = ({ item, setListItems, listItems }) => {
   return (
     <View
       style={{
