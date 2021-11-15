@@ -6,14 +6,11 @@ import ButtonA from "../../components/ButtonA";
 
 export default Home = () => {
   return (
-    <View style={styling.container}>
-      <View style={styles.topSubContainer}>
+    <View style={styles.container}>
+      <View style={styles.topHomeContainer}>
+        <ButtonA route={"Create a new list"} label={"Create a New List"} />
         <ButtonA
-          route={"Create a new now-it list"}
-          label={"Create a New List"}
-        />
-        <ButtonA
-          route={"Create a new now-it thought"}
+          route={"Create a new thought"}
           label={"Create a New Thought"}
         />
       </View>

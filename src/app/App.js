@@ -12,11 +12,8 @@ export default App = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Welcome to now-it" component={Home} />
-        <Stack.Screen name="Create a new now-it list" component={CreateList} />
-        <Stack.Screen
-          name="Create a new now-it thought"
-          component={CreateThought}
-        />
+        <Stack.Screen name="Create a new list" component={CreateList} />
+        <Stack.Screen name="Create a new thought" component={CreateThought} />
       </Stack.Navigator>
     </NavigationContainer>
   );

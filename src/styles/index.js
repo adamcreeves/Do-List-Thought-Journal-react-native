@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
   },
-  topSubContainer: {
+  topHomeContainer: {
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-evenly",
@@ -23,5 +23,32 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "skyblue",
     marginHorizontal: 3,
+  },
+  listBodyContainer: {
+    width: "90%",
+    height: 160,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: "black",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  listEntry: {
+    height: 50,
+    width: "85%",
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: "black",
+    textAlign: "center",
+    marginBottom: 20,
+    fontSize: 18,
+  },
+  listEntryButton: {
+    width: "85%",
+  },
+  listEntryButtonText: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 18,
   },
 });
