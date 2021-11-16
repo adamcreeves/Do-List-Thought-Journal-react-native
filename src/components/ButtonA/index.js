@@ -5,8 +5,9 @@ import { useNavigation } from "@react-navigation/native";
 
 export default CreateList = ({ route, label }) => {
   const nav = useNavigation();
+  const handlePress = () => nav.navigate(route);
   return (
-    <TouchableOpacity style={styles.button} onPress={() => nav.navigate(route)}>
+    <TouchableOpacity style={styles.button} onPress={handlePress}>
       <Text>{label}</Text>
     </TouchableOpacity>
   );

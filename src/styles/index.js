@@ -33,6 +33,18 @@ export const styles = StyleSheet.create({
     marginVertical: 15,
     alignItems: "center",
   },
+  listTitleContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginVertical: 6,
+  },
+  listTitleText: {
+    fontSize: 23,
+    fontWeight: "bold",
+    textDecorationLine: "underline",
+  },
+  editTitleButton: { marginLeft: 10 },
+  editTitleIcon: { height: 18, width: 18 },
   listBodyContainer: {
     width: "90%",
     height: 160,

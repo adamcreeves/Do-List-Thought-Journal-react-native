@@ -23,9 +23,9 @@ const addListItem = (task, taskList, setListItems, resetInput) => {
 };
 
 const createListButtonFunc = (listName, listItems) => {
-  if (listName === "") {
+  if (!listName) {
     alert("Whoops! You forgot to name your list");
-  } else if (listItems.length === 0) {
+  } else if (!listItems.length) {
     alert("Whoops! You forgot to add one or more tasks to your list");
   } else {
     alert("Your list has been created");

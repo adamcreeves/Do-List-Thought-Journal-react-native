@@ -1,30 +1,15 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
+import { styles } from "../../styles";
 
 export default RenderListTitle = ({ listName, setListName }) => {
+  const handlePress = () => setListName("");
   return (
-    <View
-      style={{
-        flexDirection: "row",
-        alignItems: "center",
-        marginVertical: 6,
-      }}
-    >
-      <Text
-        style={{
-          fontSize: 23,
-          fontWeight: "bold",
-          textDecorationLine: "underline",
-        }}
-      >
-        {listName}
-      </Text>
-      <TouchableOpacity
-        style={{ marginLeft: 10 }}
-        onPress={() => setListName("")}
-      >
+    <View style={styles.listTitleContainer}>
+      <Text style={styles.listTitleText}>{listName}</Text>
+      <TouchableOpacity style={styles.editTitleButton} onPress={handlePress}>
         <Image
-          style={{ height: 18, width: 18 }}
+          style={styles.editTitleIcon}
           source={require("../../../assets/pencil.png")}
         />
       </TouchableOpacity>

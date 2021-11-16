@@ -46,11 +46,14 @@ export default CreateList = () => {
       />
       {listName || listItems.length ? (
         <RenderListBody
+          previewTitle={"List Preview:"}
           name={listName}
           setName={setListName}
+          listWidth={260}
           items={listItems}
           setItems={setListItems}
           submit={submitList}
+          submitLabel={"Create list"}
         />
       ) : null}
     </View>

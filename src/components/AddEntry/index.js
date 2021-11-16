@@ -8,12 +8,13 @@ export default AddEntry = ({
   value,
   onSubmitEditing,
 }) => {
+  const handleTextInput = (text) => setText(text);
   return (
     <TextInput
       style={inputStyle}
       placeholder={placeholderText}
       placeholderTextColor="#aaaaaa"
-      onChangeText={(text) => setText(text)}
+      onChangeText={handleTextInput}
       value={value}
       underlineColorAndroid="transparent"
       autoCapitalize="none"

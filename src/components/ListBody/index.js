@@ -1,23 +1,29 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 
-export default ListBody = ({ item, setListItems, listItems }) => {
+export default ListBody = ({ listWidth, item, setListItems, listItems }) => {
   return (
     <View
-      style={{
-        width: 220,
-        flexDirection: "row",
-        justifyContent: "space-between",
-      }}
+      style={[
+        {
+          flexDirection: "row",
+          justifyContent: "space-between",
+        },
+        { width: listWidth },
+      ]}
     >
       <Text
-        style={{
-          color: "black",
-          flexDirection: "row",
-          width: 190,
-          marginVertical: 3,
-          fontSize: 18,
-        }}
+        style={[
+          {
+            color: "black",
+            flexDirection: "row",
+            marginVertical: 3,
+            fontSize: 18,
+          },
+          {
+            width: listWidth - 26,
+          },
+        ]}
       >
         {"\u25CF  " + item}
       </Text>
