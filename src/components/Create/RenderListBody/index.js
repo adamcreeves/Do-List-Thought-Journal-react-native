@@ -3,7 +3,7 @@ import { View, Text } from "react-native";
 import RenderListTitle from "../RenderListTitle";
 import SubmitButton from "../SubmitButton";
 import TaskList from "../TaskList";
-import { styles } from "../../styles";
+import { styles } from "../../../styles";
 
 export default RenderListBody = ({
   previewTitle,

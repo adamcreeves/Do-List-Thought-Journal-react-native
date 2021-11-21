@@ -35,7 +35,7 @@ export default ListBody = ({ listWidth, item, setListItems, listItems }) => {
           marginHorizontal: 6,
         }}
       >
-        <Image source={require("../../../assets/deleteicon.png")} />
+        <Image source={require("../../../../assets/deleteicon.png")} />
       </TouchableOpacity>
     </View>
   );

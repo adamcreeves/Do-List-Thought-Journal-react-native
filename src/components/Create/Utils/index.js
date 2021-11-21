@@ -6,7 +6,7 @@ const addTitle = (title, setTitle, resetInput) => {
     setTitle(title);
     resetInput("");
   } else {
-    alert("You need to name your list");
+    alert("You need to name it to proceed");
   }
 };
 
@@ -24,11 +24,11 @@ const addListItem = (task, taskList, setListItems, resetInput) => {
 
 const createListButtonFunc = (listName, listItems) => {
   if (!listName) {
-    alert("Whoops! You forgot to name your list");
+    alert("Whoops! You forgot to enter a name");
   } else if (!listItems.length) {
-    alert("Whoops! You forgot to add one or more tasks to your list");
+    alert("Whoops! You forgot to add one or more items");
   } else {
-    alert("Your list has been created");
+    alert("Published successfully");
     console.log("This is the list: ", [listName, listItems]);
   }
 };

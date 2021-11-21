@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { View } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import AddEntryContainer from "../../components/AddEntryContainer";
+import AddEntryContainer from "../../components/Create/AddEntryContainer";
 import { styles } from "../../styles";
 import {
   addListItem,
   addTitle,
   createListButtonFunc,
-} from "../../components/Utils";
-import RenderListBody from "../../components/RenderListBody";
+} from "../../components/Create/Utils";
+import RenderListBody from "../../components/Create/RenderListBody";
 
 export default CreateThought = () => {
   const [thoughtEntryText, setThoughtEntryText] = useState("");
@@ -55,7 +55,7 @@ export default CreateThought = () => {
           items={thoughts}
           setItems={setThoughts}
           submit={submitThoughts}
-          submitLabel={"Create thought"}
+          submitLabel={"Publish thought"}
         />
       ) : null}
     </View>

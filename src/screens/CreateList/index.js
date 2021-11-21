@@ -1,13 +1,14 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { View } from "react-native";
-import AddEntryContainer from "../../components/AddEntryContainer";
-import RenderListBody from "../../components/RenderListBody";
+import AddEntryContainer from "../../components/Create/AddEntryContainer";
+import RenderListBody from "../../components/Create/RenderListBody";
 import {
-  createListButtonFunc,
   addListItem,
   addTitle,
-} from "../../components/Utils";
+  createListButtonFunc,
+} from "../../components/Create/Utils";
+
 import { styles } from "../../styles";
 
 export default CreateList = () => {
@@ -53,7 +54,7 @@ export default CreateList = () => {
           items={listItems}
           setItems={setListItems}
           submit={submitList}
-          submitLabel={"Create list"}
+          submitLabel={"Publish list"}
         />
       ) : null}
     </View>

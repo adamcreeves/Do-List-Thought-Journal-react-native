@@ -1,9 +1,9 @@
 import React from "react";
 import { Text, TouchableOpacity } from "react-native";
-import { styles } from "../../styles";
+import { styles } from "../../../styles";
 import { useNavigation } from "@react-navigation/native";
 
-export default CreateList = ({ route, label }) => {
+export default ActionButton = ({ route, label }) => {
   const nav = useNavigation();
   const handlePress = () => nav.navigate(route);
   return (
