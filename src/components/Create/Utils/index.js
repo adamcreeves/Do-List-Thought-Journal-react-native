@@ -1,22 +1,23 @@
 import { Keyboard } from "react-native";
+import { str006, str016, str017 } from "../../../resources/strings";
 
 const addTitle = (title, setTitle, resetInput) => {
   if (title) {
     Keyboard.dismiss();
     setTitle(title);
-    resetInput("");
+    resetInput(str006);
   } else {
-    alert("You need to name it to proceed");
+    alert(str016);
   }
 };
 
 const addListItem = (task, taskList, setListItems, resetInput) => {
   if (!task) {
-    alert("Enter a task to add it to your list");
+    alert(str017);
   } else if (!taskList.includes(task.toLowerCase())) {
     Keyboard.dismiss();
     setListItems([task, ...taskList]);
-    resetInput("");
+    resetInput(str006);
   } else {
     alert("You already added that task to your list");
   }

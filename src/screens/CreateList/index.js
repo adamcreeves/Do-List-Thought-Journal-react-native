@@ -8,14 +8,23 @@ import {
   addTitle,
   createListButtonFunc,
 } from "../../components/Create/Utils";
+import {
+  str005,
+  str006,
+  str007,
+  str008,
+  str009,
+  str010,
+  str012,
+} from "../../resources/strings";
 
 import { styles } from "../../styles";
 
 export default CreateList = () => {
-  const [listEntryText, setListEntryText] = useState("");
-  const [listName, setListName] = useState("");
+  const [listEntryText, setListEntryText] = useState(str006);
+  const [listName, setListName] = useState(str006);
   const [listItems, setListItems] = useState([]);
-  const placeholder = listName ? "Enter a task" : "Name your list";
+  const placeholder = listName ? str007 : str008;
 
   const addTitleFunc = () =>
     addTitle(listEntryText, setListName, setListEntryText);
@@ -32,7 +41,7 @@ export default CreateList = () => {
 
   return (
     <View style={mainViewStyle}>
-      <StatusBar style="auto" />
+      <StatusBar style={str005} />
       <AddEntryContainer
         containerStyle={styles.listBodyContainer}
         listEntryStyle={styles.listEntry}
@@ -43,18 +52,18 @@ export default CreateList = () => {
         buttonStyle={[styles.button, styles.listEntryButton]}
         buttonFunc={!listName ? addTitleFunc : addTaskFunc}
         buttonTextStyle={styles.listEntryButtonText}
-        buttonText={"Next"}
+        buttonText={str009}
       />
       {listName || listItems.length ? (
         <RenderListBody
-          previewTitle={"List Preview:"}
+          previewTitle={str010}
           name={listName}
           setName={setListName}
           listWidth={260}
           items={listItems}
           setItems={setListItems}
           submit={submitList}
-          submitLabel={"Publish list"}
+          submitLabel={str012}
         />
       ) : null}
     </View>

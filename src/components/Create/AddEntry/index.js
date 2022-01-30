@@ -1,5 +1,7 @@
 import React from "react";
 import { TextInput } from "react-native";
+import { gray, transparent } from "../../../resources/colors";
+import { str014 } from "../../../resources/strings";
 
 export default AddEntry = ({
   inputStyle,
@@ -13,11 +15,11 @@ export default AddEntry = ({
     <TextInput
       style={inputStyle}
       placeholder={placeholderText}
-      placeholderTextColor="#aaaaaa"
+      placeholderTextColor={gray}
       onChangeText={handleTextInput}
       value={value}
-      underlineColorAndroid="transparent"
-      autoCapitalize="none"
+      underlineColorAndroid={transparent}
+      autoCapitalize={str014}
       onSubmitEditing={onSubmitEditing}
     />
   );

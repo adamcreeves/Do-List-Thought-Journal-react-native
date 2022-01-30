@@ -9,10 +9,17 @@ import {
   createListButtonFunc,
 } from "../../components/Create/Utils";
 import RenderListBody from "../../components/Create/RenderListBody";
+import {
+  str005,
+  str006,
+  str009,
+  str011,
+  str013,
+} from "../../resources/strings";
 
 export default CreateThought = () => {
-  const [thoughtEntryText, setThoughtEntryText] = useState("");
-  const [thoughtName, setThoughtName] = useState("");
+  const [thoughtEntryText, setThoughtEntryText] = useState(str006);
+  const [thoughtName, setThoughtName] = useState(str006);
   const [thoughts, setThoughts] = useState([]);
   const placeholder = thoughtName
     ? "Enter a thought"
@@ -33,7 +40,7 @@ export default CreateThought = () => {
 
   return (
     <View style={mainViewStyle}>
-      <StatusBar style="auto" />
+      <StatusBar style={str005} />
       <AddEntryContainer
         containerStyle={styles.listBodyContainer}
         listEntryStyle={styles.listEntry}
@@ -44,18 +51,18 @@ export default CreateThought = () => {
         buttonStyle={[styles.button, styles.listEntryButton]}
         buttonFunc={!thoughtName ? addTitleFunc : addThoughtFunc}
         buttonTextStyle={styles.listEntryButtonText}
-        buttonText={"Next"}
+        buttonText={str009}
       />
       {thoughtName || thoughts.length ? (
         <RenderListBody
-          previewTitle={"Thought Preview:"}
+          previewTitle={str011}
           name={thoughtName}
           setName={setThoughtName}
           listWidth={300}
           items={thoughts}
           setItems={setThoughts}
           submit={submitThoughts}
-          submitLabel={"Publish thought"}
+          submitLabel={str013}
         />
       ) : null}
     </View>

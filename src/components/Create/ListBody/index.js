@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
+import { str015 } from "../../../resources/strings";
 
 export default ListBody = ({ listWidth, item, setListItems, listItems }) => {
   return (
@@ -25,7 +26,7 @@ export default ListBody = ({ listWidth, item, setListItems, listItems }) => {
           },
         ]}
       >
-        {"\u25CF  " + item}
+        {str015 + item}
       </Text>
       <TouchableOpacity
         onPress={() => setListItems(listItems.filter((x) => x !== item))}
