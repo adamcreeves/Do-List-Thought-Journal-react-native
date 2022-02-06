@@ -3,8 +3,11 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
+    height: "auto",
     backgroundColor: "#fff",
     alignItems: "center",
+    justifyContent: "center",
+    paddingTop: 35,
   },
   topHomeContainer: {
     width: "100%",
@@ -79,4 +82,15 @@ export const styles = StyleSheet.create({
   },
   submitBtnExtra: { width: "100%", marginHorizontal: 0 },
   centerAlign: { alignItems: "center" },
+  welcomeTitle: {
+    fontSize: 50,
+    fontWeight: "bold",
+    color: "skyblue",
+    textAlign: "center",
+  },
+  welcomeSubtitle: {
+    fontSize: 30,
+    color: "skyblue",
+    textAlign: "center",
+  },
 });

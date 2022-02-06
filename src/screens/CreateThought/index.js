@@ -40,7 +40,6 @@ export default CreateThought = () => {
 
   return (
     <View style={mainViewStyle}>
-      <StatusBar style={str005} />
       <AddEntryContainer
         containerStyle={styles.listBodyContainer}
         listEntryStyle={styles.listEntry}

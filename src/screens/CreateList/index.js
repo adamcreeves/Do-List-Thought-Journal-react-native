@@ -9,6 +9,7 @@ import {
   createListButtonFunc,
 } from "../../components/Create/Utils";
 import {
+  str004,
   str005,
   str006,
   str007,
@@ -41,7 +42,6 @@ export default CreateList = () => {
 
   return (
     <View style={mainViewStyle}>
-      <StatusBar style={str005} />
       <AddEntryContainer
         containerStyle={styles.listBodyContainer}
         listEntryStyle={styles.listEntry}

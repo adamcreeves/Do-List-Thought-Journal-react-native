@@ -1,18 +1,17 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { View } from "react-native";
+import React, { useState } from "react";
+import { View, Button } from "react-native";
 import { styles } from "../../styles";
-import ActionButton from "../../components/Create/ActionButton";
-import { str002, str003, str004, str005 } from "../../resources/strings";
+import Welcome from "../../components/Welcome";
+import { str005 } from "../../resources/strings";
 
 export default Home = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
+  const handlePress = () => setLoggedIn(!loggedIn);
   return (
     <View style={styles.container}>
-      <View style={styles.topHomeContainer}>
-        <ActionButton route={str002} label={str002} />
-        <ActionButton route={str003} label={str003} />
-      </View>
-      <ActionButton route={str004} label={str004} />
+      <Button onPress={handlePress} title="Switch" style={{ margin: 25 }} />
+      <Welcome loggedIn={loggedIn} />
       <StatusBar style={str005} />
     </View>
   );
