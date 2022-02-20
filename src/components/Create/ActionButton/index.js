@@ -8,7 +8,7 @@ export default ActionButton = ({ route, label }) => {
   const handlePress = () => nav.navigate(route);
   return (
     <TouchableOpacity style={styles.button} onPress={handlePress}>
-      <Text>{label}</Text>
+      <Text style={styles.buttonText}>{label}</Text>
     </TouchableOpacity>
   );
 };

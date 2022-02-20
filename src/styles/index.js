@@ -9,23 +9,43 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     paddingTop: 35,
   },
-  topHomeContainer: {
+  buttonContainer: {
     width: "100%",
-    flexDirection: "row",
-    justifyContent: "space-evenly",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
   },
   button: {
     display: "flex",
-    borderWidth: 1,
+    borderWidth: 0.5,
     borderColor: "black",
     borderRadius: 5,
     borderWidth: 1.5,
     padding: 10,
-    fontSize: 14,
-    width: 175,
+    marginVertical: 10,
+    width: 300,
     alignItems: "center",
     backgroundColor: "skyblue",
     marginHorizontal: 3,
+  },
+  buttonText: {
+    fontSize: 25,
+    textShadowOffset: {
+      width: 1,
+      height: 1,
+    },
+    textShadowColor: "black",
+    textShadowRadius: 5,
+    color: "white",
+  },
+  quoteText: {
+    fontStyle: "italic",
+    position: "absolute",
+    fontSize: 18,
+    marginHorizontal: 35,
+    textAlign: "center",
+    fontWeight: "normal",
+    bottom: 70,
   },
   createListMain: {
     borderWidth: 1,
@@ -51,9 +71,6 @@ export const styles = StyleSheet.create({
   listBodyContainer: {
     width: "90%",
     height: 160,
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: "black",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -73,7 +90,13 @@ export const styles = StyleSheet.create({
   listEntryButtonText: {
     color: "white",
     fontWeight: "bold",
-    fontSize: 18,
+    fontSize: 20,
+    textShadowOffset: {
+      width: 1,
+      height: 1,
+    },
+    textShadowColor: "black",
+    textShadowRadius: 5,
   },
   width90: { width: "90%" },
   listPreviewText: {
@@ -83,14 +106,26 @@ export const styles = StyleSheet.create({
   submitBtnExtra: { width: "100%", marginHorizontal: 0 },
   centerAlign: { alignItems: "center" },
   welcomeTitle: {
-    fontSize: 50,
+    fontSize: 70,
     fontWeight: "bold",
     color: "skyblue",
     textAlign: "center",
+    textShadowOffset: {
+      width: 1,
+      height: 1,
+    },
+    textShadowColor: "black",
+    textShadowRadius: 5,
   },
   welcomeSubtitle: {
-    fontSize: 30,
+    fontSize: 40,
     color: "skyblue",
     textAlign: "center",
+    textShadowOffset: {
+      width: 1,
+      height: 1,
+    },
+    textShadowColor: "black",
+    textShadowRadius: 5,
   },
 });

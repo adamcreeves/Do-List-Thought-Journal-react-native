@@ -7,7 +7,7 @@ import {
   addListItem,
   addTitle,
   createListButtonFunc,
-} from "../../components/Create/Utils";
+} from "../../components/Utils";
 import RenderListBody from "../../components/Create/RenderListBody";
 import {
   str005,
@@ -31,7 +31,8 @@ export default CreateThought = () => {
   const addThoughtFunc = () =>
     addListItem(thoughtEntryText, thoughts, setThoughts, setThoughtEntryText);
 
-  const submitThoughts = () => createListButtonFunc(thoughtName, thoughts);
+  const submitThoughts = () =>
+    createListButtonFunc(thoughtName, thoughts, "thoughts");
 
   const mainViewStyle =
     thoughtName || thoughts.length

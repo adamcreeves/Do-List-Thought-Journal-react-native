@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { View } from "react-native";
 import AddEntryContainer from "../../components/Create/AddEntryContainer";
@@ -6,8 +7,9 @@ import {
   addListItem,
   addTitle,
   createListButtonFunc,
-} from "../../components/Create/Utils";
+} from "../../components/Utils";
 import {
+  str001,
   str006,
   str007,
   str008,
@@ -23,6 +25,7 @@ export default CreateList = () => {
   const [listName, setListName] = useState(str006);
   const [listItems, setListItems] = useState([]);
   const placeholder = listName ? str007 : str008;
+  const nav = useNavigation();
 
   const addTitleFunc = () =>
     addTitle(listEntryText, setListName, setListEntryText);
@@ -31,9 +34,10 @@ export default CreateList = () => {
     addListItem(listEntryText, listItems, setListItems, setListEntryText);
 
   const submitList = () => {
-    createListButtonFunc(listName, listItems);
+    createListButtonFunc(listName, listItems, "lists");
     setListName(str006);
     setListItems([]);
+    nav.navigate(str001);
   };
 
   const mainViewStyle =

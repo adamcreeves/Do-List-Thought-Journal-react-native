@@ -2,13 +2,13 @@ now-it - For daily thoughts, to-do lists, and more
 
 ### Home screen
 
-[![Screen Shot 2021-11-12 at 12.52.35 AM](https://i.imgur.com/rXO2Q6K.png)]
+[![Home screen](https://i.imgur.com/RfwY9Ny.png)]
 
-### Create new list screen
+### Create screen
 
-[![Screen Shot 2021-11-14 at 11.23.00 PM](https://i.imgur.com/I3N0f8g.png)]
-[![Screen Shot 2021-11-14 at 11.24.00 PM](https://i.imgur.com/igbYJWb.png)]
+[![Create screen](https://i.imgur.com/XWvqtMP.png)]
 
-### Create new thought screen
+### Create new list screens
 
-[![Screen Shot 2021-11-12 at 12.53.10 AM](https://i.imgur.com/UbBGnit.png)]
+[![Name list screen](https://i.imgur.com/LYxyTSb.png)]
+[![Enter list items screen](https://i.imgur.com/kP7LHOC.png)]
