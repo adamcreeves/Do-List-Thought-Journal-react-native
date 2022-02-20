@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { View } from "react-native";
 import AddEntryContainer from "../../components/Create/AddEntryContainer";
@@ -9,8 +8,6 @@ import {
   createListButtonFunc,
 } from "../../components/Create/Utils";
 import {
-  str004,
-  str005,
   str006,
   str007,
   str008,
@@ -33,7 +30,11 @@ export default CreateList = () => {
   const addTaskFunc = () =>
     addListItem(listEntryText, listItems, setListItems, setListEntryText);
 
-  const submitList = () => createListButtonFunc(listName, listItems);
+  const submitList = () => {
+    createListButtonFunc(listName, listItems);
+    setListName(str006);
+    setListItems([]);
+  };
 
   const mainViewStyle =
     listName || listItems.length

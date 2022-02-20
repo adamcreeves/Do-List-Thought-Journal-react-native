@@ -8,19 +8,22 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-firebase/app": "^14.5.0",
     "@react-navigation/bottom-tabs": "^6.2.0",
-    "@react-navigation/native": "^6.0.6",
+    "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.4.1",
     "@react-navigation/stack": "^6.1.1",
     "ansi-regex": "^6.0.1",
     "escape-string-regexp": "^4.0.0",
     "expo": "^44.0.0",
     "expo-status-bar": "~1.2.0",
+    "firebase": "^9.6.7",
     "nanoid": "^3.1.31",
     "node-fetch": "^2.6.7",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
+    "react-native-gesture-handler": "^2.1.1",
     "react-native-web": "0.17.1",
     "shelljs": "^0.8.5"
   },
