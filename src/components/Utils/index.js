@@ -1,6 +1,6 @@
 import { Keyboard } from "react-native";
 import { Alert } from "react-native";
-import { auth, db } from "../../firebase/config";
+import { auth } from "../../firebase/config";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import {
   str001,
@@ -87,22 +87,27 @@ const addListItem = (task, taskList, setListItems, resetInput) => {
   }
 };
 
-const createListButtonFunc = (listName, listItems, collectionName) => {
-  if (!listName) {
-    alert("Whoops! You forgot to enter a name");
-  } else if (!listItems.length) {
-    alert("Whoops! You forgot to add one or more items");
-  } else {
-    const list = { name: listName, list: listItems };
-    const listDB = db.collection(collectionName);
-    listDB
-      .add(list)
-      .then(() => {
-        alert("Published successfully");
-        console.log("This is the list: ", list);
-      })
-      .catch((error) => console.log("There was an error: ", error));
-  }
+const createListButtonFunc = async (
+  listName,
+  listItems,
+  database,
+  currentUser,
+  navigation
+) => {
+  const list = {
+    name: listName,
+    list: listItems,
+    author: currentUser.uid,
+  };
+  await database
+    .add(list)
+    .then(() => {
+      alert("Successfully published!");
+    })
+    .catch((error) =>
+      alert(`There was an error: ${error.errorCode}: ${error.errorMessage}`)
+    );
+  navigation.navigate(str001);
 };
 
 const customStackNavigator = { headerShown: false };
@@ -235,7 +240,14 @@ const registerNewUser = (
   }
 };
 
-const loginUser = (email, setEmail, password, setPassword, dispatch) => {
+const loginUser = (
+  email,
+  setEmail,
+  password,
+  setPassword,
+  dispatch,
+  setLoading
+) => {
   if (email === str006) {
     alert("You need to enter your email");
   } else if (password === str006) {
@@ -244,31 +256,32 @@ const loginUser = (email, setEmail, password, setPassword, dispatch) => {
     auth
       .signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
+        setLoading(true);
         const user = userCredential.user;
         dispatch({ type: LOGIN, payload: user });
+        setEmail(str006);
+        setPassword(str006);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         alert(`${errorCode}: ${errorMessage}`);
       });
-    setEmail(str006);
-    setPassword(str006);
   }
 };
 
-const logoutUser = (dispatch) => {
+const logoutUser = (dispatch, setLoading) => {
+  setLoading(true);
   Alert.alert("Logout", "Are you sure?", [
     {
       text: "Cancel",
-      onPress: () => console.log("Canceled: User still logged in"),
+      onPress: () => setLoading(false),
       style: "cancel",
     },
     {
       text: "Confirm",
       onPress: () => {
         auth.signOut();
-        console.log("Confirmed: User logged out");
         dispatch({ type: LOGOUT, payload: {} });
       },
     },

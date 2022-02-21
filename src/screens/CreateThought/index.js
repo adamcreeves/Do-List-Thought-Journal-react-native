@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View } from "react-native";
+import { View, ActivityIndicator } from "react-native";
 import AddEntryContainer from "../../components/Create/AddEntryContainer";
 import { styles } from "../../styles";
 import {
@@ -9,20 +9,19 @@ import {
   createListButtonFunc,
 } from "../../components/Utils";
 import RenderListBody from "../../components/Create/RenderListBody";
-import {
-  str001,
-  str006,
-  str009,
-  str011,
-  str013,
-} from "../../resources/strings";
+import { str006, str009, str011, str013 } from "../../resources/strings";
 import { useNavigation } from "@react-navigation/native";
+import { db } from "../../firebase/config";
 
-export default CreateThought = () => {
+export default CreateThought = (props) => {
+  const [loading, setLoading] = useState(false);
   const [thoughtEntryText, setThoughtEntryText] = useState(str006);
   const [thoughtName, setThoughtName] = useState(str006);
   const [thoughts, setThoughts] = useState([]);
-  const nav = useNavigation();
+  const navigation = useNavigation();
+  const thoughtDB = db.collection("Thoughts");
+  const stateUser = props.stateUser;
+  console.log("here here here ", stateUser);
   const placeholder = thoughtName
     ? "Enter a thought"
     : "Enter title for your thoughts";
@@ -34,16 +33,30 @@ export default CreateThought = () => {
     addListItem(thoughtEntryText, thoughts, setThoughts, setThoughtEntryText);
 
   const submitThoughts = () => {
-    createListButtonFunc(thoughtName, thoughts, "thoughts");
+    setLoading(true);
+    createListButtonFunc(
+      thoughtName,
+      thoughts,
+      thoughtDB,
+      stateUser,
+      navigation
+    );
     setThoughtName(str006);
     setThoughts([]);
-    nav.navigate(str001);
   };
 
   const mainViewStyle =
     thoughtName || thoughts.length
       ? styles.container
       : [styles.container, centerJustified];
+
+  if (loading) {
+    return (
+      <View style={[styles.container, { backgroundColor: "#87CEEB" }]}>
+        <ActivityIndicator size={"large"} color={"#FFFFFF"} />
+      </View>
+    );
+  }
 
   return (
     <View style={mainViewStyle}>

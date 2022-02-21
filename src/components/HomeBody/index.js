@@ -1,14 +1,27 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, Text, ActivityIndicator } from "react-native";
 import { str000, str018 } from "../../resources/strings";
 import { styles } from "../../styles";
-import { getQuote } from "../Utils";
+import { getQuote, logoutUser } from "../Utils";
 import Logout from "../Logout";
 import { useDispatch } from "react-redux";
 
-export default HomeBody = () => {
+export default HomeBody = ({ route }) => {
+  const [loading, setLoading] = useState(false);
   const quote = getQuote();
   const dispatch = useDispatch();
+  const logout = () => {
+    logoutUser(dispatch, setLoading);
+  };
+
+  if (loading) {
+    return (
+      <View style={[styles.container, { backgroundColor: "#87CEEB" }]}>
+        <ActivityIndicator size={"large"} color={"#FFFFFF"} />
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <Logout
@@ -19,7 +32,7 @@ export default HomeBody = () => {
           right: 25,
         }}
         textStyle={{ color: "#87CEEB", fontWeight: "bold" }}
-        dispatch={dispatch}
+        onPress={logout}
       />
       <Text style={styles.mainTitle}>{str000}</Text>
       <Text style={styles.mainSubtitle}>{str018}</Text>

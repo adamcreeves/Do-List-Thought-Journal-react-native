@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import { View } from "react-native";
+import { View, ActivityIndicator } from "react-native";
 import AddEntryContainer from "../../components/Create/AddEntryContainer";
 import RenderListBody from "../../components/Create/RenderListBody";
 import {
@@ -9,8 +9,8 @@ import {
   centerJustified,
   createListButtonFunc,
 } from "../../components/Utils";
+import { db } from "../../firebase/config";
 import {
-  str001,
   str006,
   str007,
   str008,
@@ -18,15 +18,18 @@ import {
   str010,
   str012,
 } from "../../resources/strings";
-
 import { styles } from "../../styles";
 
-export default CreateList = () => {
+export default CreateList = (props) => {
+  const [loading, setLoading] = useState(false);
   const [listEntryText, setListEntryText] = useState(str006);
   const [listName, setListName] = useState(str006);
   const [listItems, setListItems] = useState([]);
   const placeholder = listName ? str007 : str008;
-  const nav = useNavigation();
+  const stateUser = props.extraData;
+  const listDB = db.collection("Lists");
+  console.log("here here here ", stateUser);
+  const navigation = useNavigation();
 
   const addTitleFunc = () =>
     addTitle(listEntryText, setListName, setListEntryText);
@@ -35,16 +38,28 @@ export default CreateList = () => {
     addListItem(listEntryText, listItems, setListItems, setListEntryText);
 
   const submitList = () => {
-    createListButtonFunc(listName, listItems, "lists");
-    setListName(str006);
-    setListItems([]);
-    nav.navigate(str001);
+    if (listName && listItems.length) {
+      setLoading(true);
+      createListButtonFunc(listName, listItems, listDB, stateUser, navigation);
+      setListName(str006);
+      setListItems([]);
+    } else {
+      alert("Your list needs a name and items to publish");
+    }
   };
 
   const mainViewStyle =
     listName || listItems.length
       ? styles.container
       : [styles.container, centerJustified];
+
+  if (loading) {
+    return (
+      <View style={[styles.container, { backgroundColor: "#87CEEB" }]}>
+        <ActivityIndicator size={"large"} color={"#FFFFFF"} />
+      </View>
+    );
+  }
 
   return (
     <View style={mainViewStyle}>

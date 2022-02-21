@@ -1,7 +1,14 @@
-import { LOGIN, LOGOUT, REGISTER } from "./ActionTypes";
+import {
+  CLEAR_RESPONSE,
+  LOGIN,
+  LOGOUT,
+  REGISTER,
+  REQUEST_SENT,
+} from "./ActionTypes";
 
 const initialState = {
   user: null,
+  response: null,
 };
 
 const authenticationReducer = (state = initialState, action) => {
