@@ -4,12 +4,15 @@ import { gray, transparent } from "../../resources/colors";
 import { str006, str014 } from "../../resources/strings";
 import { styles } from "../../styles";
 import { auth } from "../../firebase/config";
+import { useDispatch } from "react-redux";
+import { LOGIN } from "../../redux/ActionTypes";
 
 export default Login = () => {
   const [email, setEmail] = useState(str006);
   const [password, setPassword] = useState(str006);
   const handleEmailInput = (text) => setEmail(text);
   const handlePasswordInput = (text) => setPassword(text);
+  const dispatch = useDispatch();
   const handleLogin = () => {
     if (email === str006) {
       alert("You need to enter your email");
@@ -19,10 +22,8 @@ export default Login = () => {
       auth
         .signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
-          // Signed in
           const user = userCredential.user;
-          console.log("This is userCredential: ", userCredential);
-          // ...
+          dispatch({ type: LOGIN, payload: user });
         })
         .catch((error) => {
           const errorCode = error.code;

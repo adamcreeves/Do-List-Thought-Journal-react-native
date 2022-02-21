@@ -4,6 +4,8 @@ import { gray, transparent } from "../../resources/colors";
 import { str006, str014 } from "../../resources/strings";
 import { styles } from "../../styles";
 import { auth } from "../../firebase/config";
+import { REGISTER } from "../../redux/ActionTypes";
+import { useDispatch } from "react-redux";
 
 export default Register = () => {
   const [username, setUsername] = useState(str006);
@@ -13,6 +15,7 @@ export default Register = () => {
   const handleUserNameInput = (text) => setUsername(text);
   const handleEmailInput = (text) => setEmail(text);
   const handlePasswordInput = (text) => setPassword(text);
+  const dispatch = useDispatch();
   const handleConfirmPasswordInput = (text) => setConfirmPassword(text);
   const handleRegister = () => {
     if (username === str006) {
@@ -30,6 +33,7 @@ export default Register = () => {
         .createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
           const user = userCredential.user;
+          dispatch({ type: REGISTER, payload: user });
           console.log(
             `This is the user: ${user} and userCredential: ${userCredential}`
           );
