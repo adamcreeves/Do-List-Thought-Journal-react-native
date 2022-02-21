@@ -108,7 +108,7 @@ const customStackNavigator = { headerShown: false };
 const tabBarCustom = ({ route }) => ({
   tabBarIcon: ({ focused }) => {
     let iconName;
-    const iconColor = !focused ? "white" : "skyblue";
+    const iconColor = !focused ? "#FFFFFF" : "#87CEEB";
     if (route.name === str001) {
       iconName = "home";
     } else if (route.name === str002) {
@@ -186,6 +186,8 @@ const getQuote = () => {
   return quoteBank[randomIndex] || str006;
 };
 
+const centerJustified = { justifyContent: "center" };
+
 export {
   createListButtonFunc,
   addListItem,
@@ -193,4 +195,5 @@ export {
   tabBarCustom,
   getQuote,
   customStackNavigator,
+  centerJustified,
 };

@@ -10,8 +10,8 @@ export default HomeBody = () => {
   const quote = getQuote();
   return (
     <View style={styles.container}>
-      <Text style={styles.welcomeTitle}>{str000}</Text>
-      <Text style={styles.welcomeSubtitle}>{str018}</Text>
+      <Text style={styles.mainTitle}>{str000}</Text>
+      <Text style={styles.mainSubtitle}>{str018}</Text>
       <Text style={styles.quoteText}>{quote}</Text>
     </View>
   );

@@ -6,6 +6,7 @@ import RenderListBody from "../../components/Create/RenderListBody";
 import {
   addListItem,
   addTitle,
+  centerJustified,
   createListButtonFunc,
 } from "../../components/Utils";
 import {
@@ -43,7 +44,7 @@ export default CreateList = () => {
   const mainViewStyle =
     listName || listItems.length
       ? styles.container
-      : [styles.container, { justifyContent: "center" }];
+      : [styles.container, centerJustified];
 
   return (
     <View style={mainViewStyle}>

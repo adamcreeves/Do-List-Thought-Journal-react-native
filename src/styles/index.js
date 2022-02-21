@@ -18,14 +18,14 @@ export const styles = StyleSheet.create({
   button: {
     display: "flex",
     borderWidth: 0.5,
-    borderColor: "black",
+    borderColor: "#000000",
     borderRadius: 5,
     borderWidth: 1.5,
     padding: 10,
     marginVertical: 10,
     width: 300,
     alignItems: "center",
-    backgroundColor: "skyblue",
+    backgroundColor: "#87CEEB",
     marginHorizontal: 3,
   },
   buttonText: {
@@ -34,9 +34,9 @@ export const styles = StyleSheet.create({
       width: 1,
       height: 1,
     },
-    textShadowColor: "black",
+    textShadowColor: "#000000",
     textShadowRadius: 5,
-    color: "white",
+    color: "#FFFFFF",
   },
   quoteText: {
     fontStyle: "italic",
@@ -49,7 +49,7 @@ export const styles = StyleSheet.create({
   },
   createListMain: {
     borderWidth: 1,
-    borderColor: "black",
+    borderColor: "#000000",
     borderRadius: 5,
     height: 440,
     width: "100%",
@@ -79,7 +79,7 @@ export const styles = StyleSheet.create({
     width: "85%",
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: "black",
+    borderColor: "#000000",
     textAlign: "center",
     marginBottom: 20,
     fontSize: 18,
@@ -88,14 +88,14 @@ export const styles = StyleSheet.create({
     width: "85%",
   },
   listEntryButtonText: {
-    color: "white",
+    color: "#FFFFFF",
     fontWeight: "bold",
     fontSize: 20,
     textShadowOffset: {
       width: 1,
       height: 1,
     },
-    textShadowColor: "black",
+    textShadowColor: "#000000",
     textShadowRadius: 5,
   },
   width90: { width: "90%" },
@@ -105,27 +105,30 @@ export const styles = StyleSheet.create({
   },
   submitBtnExtra: { width: "100%", marginHorizontal: 0 },
   centerAlign: { alignItems: "center" },
-  welcomeTitle: {
+  mainTitle: {
     fontSize: 70,
     fontWeight: "bold",
-    color: "skyblue",
+    color: "#87CEEB",
     textAlign: "center",
     textShadowOffset: {
       width: 1,
       height: 1,
     },
-    textShadowColor: "black",
+    textShadowColor: "#000000",
     textShadowRadius: 5,
   },
-  welcomeSubtitle: {
+  extraMarginVertical: {
+    marginVertical: 30,
+  },
+  mainSubtitle: {
     fontSize: 40,
-    color: "skyblue",
+    color: "#87CEEB",
     textAlign: "center",
     textShadowOffset: {
       width: 1,
       height: 1,
     },
-    textShadowColor: "black",
+    textShadowColor: "#000000",
     textShadowRadius: 5,
   },
 });
