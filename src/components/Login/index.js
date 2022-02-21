@@ -3,9 +3,8 @@ import { View, TextInput, TouchableOpacity, Text } from "react-native";
 import { gray, transparent } from "../../resources/colors";
 import { str006, str014 } from "../../resources/strings";
 import { styles } from "../../styles";
-import { auth } from "../../firebase/config";
 import { useDispatch } from "react-redux";
-import { LOGIN } from "../../redux/ActionTypes";
+import { loginUser } from "../Utils";
 
 export default Login = () => {
   const [email, setEmail] = useState(str006);
@@ -13,27 +12,8 @@ export default Login = () => {
   const handleEmailInput = (text) => setEmail(text);
   const handlePasswordInput = (text) => setPassword(text);
   const dispatch = useDispatch();
-  const handleLogin = () => {
-    if (email === str006) {
-      alert("You need to enter your email");
-    } else if (password === str006) {
-      alert("You need to enter your password");
-    } else {
-      auth
-        .signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          dispatch({ type: LOGIN, payload: user });
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          alert(`${errorCode}: ${errorMessage}`);
-        });
-      setEmail(str006);
-      setPassword(str006);
-    }
-  };
+  const handleLogin = () =>
+    loginUser(email, setEmail, password, setPassword, dispatch);
 
   return (
     <View style={styles.container}>

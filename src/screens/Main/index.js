@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { str001, str002 } from "../../resources/strings";
 import CreateBody from "../../components/Create/CreateBody";
 import { tabBarCustom } from "../../components/Utils";
-import HomeBody from "../../components/Create/HomeBody";
+import HomeBody from "../../components/HomeBody";
 
 const Tab = createBottomTabNavigator();
 

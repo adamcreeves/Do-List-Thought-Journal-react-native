@@ -1,5 +1,6 @@
 import { Keyboard } from "react-native";
-import { db } from "../../firebase/config";
+import { Alert } from "react-native";
+import { auth, db } from "../../firebase/config";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import {
   str001,
@@ -62,6 +63,7 @@ import {
   str074,
   str075,
 } from "../../resources/strings";
+import { LOGIN, LOGOUT, REGISTER } from "../../redux/ActionTypes";
 
 const addTitle = (title, setTitle, resetInput) => {
   if (title) {
@@ -85,7 +87,7 @@ const addListItem = (task, taskList, setListItems, resetInput) => {
   }
 };
 
-const createListButtonFunc = async (listName, listItems, collectionName) => {
+const createListButtonFunc = (listName, listItems, collectionName) => {
   if (!listName) {
     alert("Whoops! You forgot to enter a name");
   } else if (!listItems.length) {
@@ -188,6 +190,91 @@ const getQuote = () => {
 
 const centerJustified = { justifyContent: "center" };
 
+const registerNewUser = (
+  username,
+  setUsername,
+  email,
+  setEmail,
+  password,
+  setPassword,
+  confirmPassword,
+  setConfirmPassword,
+  dispatch
+) => {
+  if (username === str006) {
+    alert("You need to enter a username");
+  } else if (username.length < 6) {
+    alert("Your username must be 6 character or more");
+  } else if (email === str006) {
+    alert("You need to enter your email");
+  } else if (password.length < 8) {
+    alert("Your password needs to be 8 characters or more");
+  } else if (confirmPassword === str006) {
+    alert("You need to re enter your password");
+  } else if (password !== confirmPassword) {
+    alert("Your passwords don't match");
+  } else {
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        dispatch({ type: REGISTER, payload: user });
+        console.log(
+          `This is the user: ${user} and userCredential: ${userCredential}`
+        );
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(`Error: ${errorCode} - ${errorMessage}`);
+      });
+    setUsername(str006);
+    setEmail(str006);
+    setPassword(str006);
+    setConfirmPassword(str006);
+  }
+};
+
+const loginUser = (email, setEmail, password, setPassword, dispatch) => {
+  if (email === str006) {
+    alert("You need to enter your email");
+  } else if (password === str006) {
+    alert("You need to enter your password");
+  } else {
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        dispatch({ type: LOGIN, payload: user });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(`${errorCode}: ${errorMessage}`);
+      });
+    setEmail(str006);
+    setPassword(str006);
+  }
+};
+
+const logoutUser = (dispatch) => {
+  Alert.alert("Logout", "Are you sure?", [
+    {
+      text: "Cancel",
+      onPress: () => console.log("Canceled: User still logged in"),
+      style: "cancel",
+    },
+    {
+      text: "Confirm",
+      onPress: () => {
+        auth.signOut();
+        console.log("Confirmed: User logged out");
+        dispatch({ type: LOGOUT, payload: {} });
+      },
+    },
+  ]);
+};
+
 export {
   createListButtonFunc,
   addListItem,
@@ -196,4 +283,7 @@ export {
   getQuote,
   customStackNavigator,
   centerJustified,
+  registerNewUser,
+  loginUser,
+  logoutUser,
 };
