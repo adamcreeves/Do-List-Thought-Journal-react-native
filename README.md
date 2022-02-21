@@ -1,8 +1,20 @@
-now-it - For daily thoughts, to-do lists, and more
+Do-Thot - For daily thoughts, to-do lists, and more
+
+### Splash screen
+
+[![Splash screen](https://i.imgur.com/zI3ZRVp.png)]
+
+### Login screen
+
+[![Login screen](https://i.imgur.com/O7qWSiJ.png)]
+
+### Register screen
+
+[![Register screen](https://i.imgur.com/un4MpY8.png)]
 
 ### Home screen
 
-[![Home screen](https://i.imgur.com/RfwY9Ny.png)]
+[![Home screen](https://i.imgur.com/eBInc7M.png)]
 
 ### Create screen
 
