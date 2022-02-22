@@ -19,9 +19,8 @@ export default CreateThought = (props) => {
   const [thoughtName, setThoughtName] = useState(str006);
   const [thoughts, setThoughts] = useState([]);
   const navigation = useNavigation();
-  const thoughtDB = db.collection("Thoughts");
   const stateUser = props.stateUser;
-  console.log("here here here ", stateUser);
+  const thoughtDB = db.collection(`${stateUser?.uid}`);
   const placeholder = thoughtName
     ? "Enter a thought"
     : "Enter title for your thoughts";

@@ -11,6 +11,7 @@ import {
 } from "../../components/Utils";
 import { db } from "../../firebase/config";
 import {
+  str001,
   str006,
   str007,
   str008,
@@ -27,8 +28,8 @@ export default CreateList = (props) => {
   const [listItems, setListItems] = useState([]);
   const placeholder = listName ? str007 : str008;
   const stateUser = props.extraData;
-  const listDB = db.collection("Lists");
-  console.log("here here here ", stateUser);
+  const listDB = db.collection(`${stateUser?.uid}`);
+  console.log("here here here ", listDB);
   const navigation = useNavigation();
 
   const addTitleFunc = () =>
@@ -38,11 +39,12 @@ export default CreateList = (props) => {
     addListItem(listEntryText, listItems, setListItems, setListEntryText);
 
   const submitList = () => {
-    if (listName && listItems.length) {
+    if (listName && listItems.length && listDB) {
       setLoading(true);
       createListButtonFunc(listName, listItems, listDB, stateUser, navigation);
       setListName(str006);
       setListItems([]);
+      navigation.navigate(str001);
     } else {
       alert("Your list needs a name and items to publish");
     }

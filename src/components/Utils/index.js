@@ -91,8 +91,7 @@ const createListButtonFunc = async (
   listName,
   listItems,
   database,
-  currentUser,
-  navigation
+  currentUser
 ) => {
   const list = {
     name: listName,
@@ -107,7 +106,6 @@ const createListButtonFunc = async (
     .catch((error) =>
       alert(`There was an error: ${error.errorCode}: ${error.errorMessage}`)
     );
-  navigation.navigate(str001);
 };
 
 const customStackNavigator = { headerShown: false };
@@ -197,47 +195,45 @@ const centerJustified = { justifyContent: "center" };
 
 const registerNewUser = (
   username,
-  setUsername,
   email,
-  setEmail,
   password,
+  location,
+  setUsername,
+  setEmail,
   setPassword,
-  confirmPassword,
   setConfirmPassword,
-  dispatch
+  setLocation,
+  dispatch,
+  database
 ) => {
-  if (username === str006) {
-    alert("You need to enter a username");
-  } else if (username.length < 6) {
-    alert("Your username must be 6 character or more");
-  } else if (email === str006) {
-    alert("You need to enter your email");
-  } else if (password.length < 8) {
-    alert("Your password needs to be 8 characters or more");
-  } else if (confirmPassword === str006) {
-    alert("You need to re enter your password");
-  } else if (password !== confirmPassword) {
-    alert("Your passwords don't match");
-  } else {
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        dispatch({ type: REGISTER, payload: user });
-        console.log(
-          `This is the user: ${user} and userCredential: ${userCredential}`
+  auth
+    .createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      const userRegistration = { username, email, location, uid: user.uid };
+      const newDb = database.collection(`${user.uid}`);
+      newDb
+        .add(userRegistration)
+        .then(() => {
+          alert("Successfully registered!");
+        })
+        .catch((error) =>
+          alert(`There was an error: ${error.errorCode}: ${error.errorMessage}`)
         );
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        alert(`Error: ${errorCode} - ${errorMessage}`);
-      });
-    setUsername(str006);
-    setEmail(str006);
-    setPassword(str006);
-    setConfirmPassword(str006);
-  }
+      dispatch({ type: REGISTER, payload: user });
+    })
+    .then(() => {
+      setUsername(str006);
+      setEmail(str006);
+      setPassword(str006);
+      setConfirmPassword(str006);
+      setLocation(str006);
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(`Error: ${errorCode} - ${errorMessage}`);
+    });
 };
 
 const loginUser = (
