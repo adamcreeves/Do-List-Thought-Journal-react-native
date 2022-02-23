@@ -1,8 +1,9 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import { View, ActivityIndicator } from "react-native";
+import { View } from "react-native";
 import AddEntryContainer from "../../components/Create/AddEntryContainer";
 import RenderListBody from "../../components/Create/RenderListBody";
+import Loading from "../../components/Loading";
 import {
   addListItem,
   addTitle,
@@ -18,6 +19,7 @@ import {
   str009,
   str010,
   str012,
+  str090,
 } from "../../resources/strings";
 import { styles } from "../../styles";
 
@@ -29,7 +31,6 @@ export default CreateList = (props) => {
   const placeholder = listName ? str007 : str008;
   const stateUser = props.extraData;
   const listDB = db.collection(`${stateUser?.uid}`);
-  console.log("here here here ", listDB);
   const navigation = useNavigation();
 
   const addTitleFunc = () =>
@@ -41,12 +42,12 @@ export default CreateList = (props) => {
   const submitList = () => {
     if (listName && listItems.length && listDB) {
       setLoading(true);
-      createListButtonFunc(listName, listItems, listDB, stateUser, navigation);
+      createListButtonFunc(listName, listItems, listDB, stateUser);
       setListName(str006);
       setListItems([]);
       navigation.navigate(str001);
     } else {
-      alert("Your list needs a name and items to publish");
+      alert(str090);
     }
   };
 
@@ -56,11 +57,7 @@ export default CreateList = (props) => {
       : [styles.container, centerJustified];
 
   if (loading) {
-    return (
-      <View style={[styles.container, { backgroundColor: "#87CEEB" }]}>
-        <ActivityIndicator size={"large"} color={"#FFFFFF"} />
-      </View>
-    );
+    return <Loading />;
   }
 
   return (

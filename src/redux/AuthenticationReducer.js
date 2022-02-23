@@ -1,10 +1,4 @@
-import {
-  CLEAR_RESPONSE,
-  LOGIN,
-  LOGOUT,
-  REGISTER,
-  REQUEST_SENT,
-} from "./ActionTypes";
+import { LOGIN, LOGOUT, REGISTER } from "./ActionTypes";
 
 const initialState = {
   user: null,

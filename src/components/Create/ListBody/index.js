@@ -1,40 +1,23 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { str015 } from "../../../resources/strings";
+import { styles } from "../../../styles";
 
 export default ListBody = ({ listWidth, item, setListItems, listItems }) => {
+  const listBodyWidth = { width: listWidth };
+  const listBodyTextWidth = {
+    width: listWidth - 26,
+  };
+  const addToFilteredList = () =>
+    setListItems(listItems.filter((x) => x !== item));
   return (
-    <View
-      style={[
-        {
-          flexDirection: "row",
-          justifyContent: "space-between",
-        },
-        { width: listWidth },
-      ]}
-    >
-      <Text
-        style={[
-          {
-            color: "black",
-            flexDirection: "row",
-            marginVertical: 3,
-            fontSize: 18,
-          },
-          {
-            width: listWidth - 26,
-          },
-        ]}
-      >
+    <View style={[styles.listBodyView, listBodyWidth]}>
+      <Text style={[styles.listBodyText, listBodyTextWidth]}>
         {str015 + item}
       </Text>
       <TouchableOpacity
-        onPress={() => setListItems(listItems.filter((x) => x !== item))}
-        style={{
-          alignItems: "center",
-          justifyContent: "center",
-          marginHorizontal: 6,
-        }}
+        onPress={addToFilteredList}
+        style={styles.listBodyButton}
       >
         <Image source={require("../../../../assets/deleteicon.png")} />
       </TouchableOpacity>

@@ -9,7 +9,7 @@ const Tab = createBottomTabNavigator();
 
 const user = false;
 
-export default Main = (props) => {
+export default Main = () => {
   return (
     <Tab.Navigator initialRouteName={str001} screenOptions={tabBarCustom}>
       <Tab.Screen name={str001} component={HomeBody} />

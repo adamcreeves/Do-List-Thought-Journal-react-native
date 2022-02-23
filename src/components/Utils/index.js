@@ -62,8 +62,30 @@ import {
   str073,
   str074,
   str075,
+  str076,
+  str083,
+  str094,
+  str095,
+  str096,
+  str097,
+  str098,
+  str099,
+  str100,
+  str101,
+  str102,
+  str103,
+  str104,
+  str105,
+  str106,
+  str107,
+  str108,
+  str109,
+  str110,
+  str111,
+  str112,
 } from "../../resources/strings";
 import { LOGIN, LOGOUT, REGISTER } from "../../redux/ActionTypes";
+import { skyblue, white } from "../../resources/colors";
 
 const addTitle = (title, setTitle, resetInput) => {
   if (title) {
@@ -83,7 +105,7 @@ const addListItem = (task, taskList, setListItems, resetInput) => {
     setListItems([task, ...taskList]);
     resetInput(str006);
   } else {
-    alert("You already added that task to your list");
+    alert(str094);
   }
 };
 
@@ -101,10 +123,10 @@ const createListButtonFunc = async (
   await database
     .add(list)
     .then(() => {
-      alert("Successfully published!");
+      alert(str095);
     })
     .catch((error) =>
-      alert(`There was an error: ${error.errorCode}: ${error.errorMessage}`)
+      alert(`${str096}${error.errorCode}${str097}${error.errorMessage}`)
     );
 };
 
@@ -113,20 +135,20 @@ const customStackNavigator = { headerShown: false };
 const tabBarCustom = ({ route }) => ({
   tabBarIcon: ({ focused }) => {
     let iconName;
-    const iconColor = !focused ? "#FFFFFF" : "#87CEEB";
+    const iconColor = !focused ? white : skyblue;
     if (route.name === str001) {
-      iconName = "home";
+      iconName = str098;
     } else if (route.name === str002) {
-      iconName = "add-circle";
+      iconName = str099;
     } else if (route.name === str074) {
-      iconName = "people";
+      iconName = str100;
     } else if (route.name === str075) {
-      iconName = "person-add";
+      iconName = str101;
     }
     return <Ionicons name={iconName} size={30} color={iconColor} />;
   },
-  tabBarActiveBackgroundColor: "gray",
-  tabBarInactiveBackgroundColor: "darkgray",
+  tabBarActiveBackgroundColor: str102,
+  tabBarInactiveBackgroundColor: str103,
   headerShown: false,
   tabBarShowLabel: false,
 });
@@ -191,7 +213,7 @@ const getQuote = () => {
   return quoteBank[randomIndex] || str006;
 };
 
-const centerJustified = { justifyContent: "center" };
+const centerJustified = { justifyContent: str076 };
 
 const registerNewUser = (
   username,
@@ -215,10 +237,10 @@ const registerNewUser = (
       newDb
         .add(userRegistration)
         .then(() => {
-          alert("Successfully registered!");
+          alert(str104);
         })
         .catch((error) =>
-          alert(`There was an error: ${error.errorCode}: ${error.errorMessage}`)
+          alert(`${str096}${error.errorCode}${str097}${error.errorMessage}`)
         );
       dispatch({ type: REGISTER, payload: user });
     })
@@ -232,7 +254,7 @@ const registerNewUser = (
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      alert(`Error: ${errorCode} - ${errorMessage}`);
+      alert(`${str105}${errorCode}${str106}${errorMessage}`);
     });
 };
 
@@ -245,9 +267,9 @@ const loginUser = (
   setLoading
 ) => {
   if (email === str006) {
-    alert("You need to enter your email");
+    alert(str107);
   } else if (password === str006) {
-    alert("You need to enter your password");
+    alert(str108);
   } else {
     auth
       .signInWithEmailAndPassword(email, password)
@@ -268,14 +290,14 @@ const loginUser = (
 
 const logoutUser = (dispatch, setLoading) => {
   setLoading(true);
-  Alert.alert("Logout", "Are you sure?", [
+  Alert.alert(str083, str109, [
     {
-      text: "Cancel",
+      text: str110,
       onPress: () => setLoading(false),
-      style: "cancel",
+      style: str111,
     },
     {
-      text: "Confirm",
+      text: str112,
       onPress: () => {
         auth.signOut();
         dispatch({ type: LOGOUT, payload: {} });

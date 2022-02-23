@@ -98,6 +98,21 @@ export const styles = StyleSheet.create({
     textShadowColor: "#000000",
     textShadowRadius: 5,
   },
+  listBodyView: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  listBodyText: {
+    color: "black",
+    flexDirection: "row",
+    marginVertical: 3,
+    fontSize: 18,
+  },
+  listBodyButton: {
+    alignItems: "center",
+    justifyContent: "center",
+    marginHorizontal: 6,
+  },
   width90: { width: "90%" },
   listPreviewText: {
     marginTop: 10,
@@ -120,6 +135,8 @@ export const styles = StyleSheet.create({
   extraMarginVertical: {
     marginVertical: 30,
   },
+  taskListView: { height: 345, flex: 1 },
+  taskListBody: { height: 345 },
   mainSubtitle: {
     fontSize: 40,
     color: "#87CEEB",
@@ -131,4 +148,12 @@ export const styles = StyleSheet.create({
     textShadowColor: "#000000",
     textShadowRadius: 5,
   },
+  logoutButton: {
+    alignItems: "center",
+    position: "absolute",
+    top: 50,
+    right: 25,
+  },
+  logoutButtonText: { color: "#87CEEB", fontWeight: "bold" },
+  loadingScreen: { backgroundColor: "#87CEEB" },
 });
