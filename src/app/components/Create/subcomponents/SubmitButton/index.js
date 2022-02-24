@@ -1,6 +1,6 @@
 import React from "react";
 import { TouchableOpacity, Text } from "react-native";
-import { styles } from "../../../../styles";
+import { styles } from "../../../../../styles";
 
 export default SubmitButton = ({ submit, label }) => {
   const combinedStyles = [styles.button, styles.submitBtnExtra];

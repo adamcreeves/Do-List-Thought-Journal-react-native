@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { View } from "react-native";
-import AddEntryContainer from "../../components/Create/AddEntryContainer";
 import { styles } from "../../../styles";
 import {
   addListItem,
@@ -8,7 +7,6 @@ import {
   centerJustified,
   createListButtonFunc,
 } from "../../components/Utils";
-import RenderListBody from "../../components/Create/RenderListBody";
 import {
   str006,
   str009,
@@ -21,6 +19,8 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { db } from "../../../firebase/config";
 import Loading from "../../components/Loading";
+import AddEntryContainer from "../../components/Create/subcomponents/AddEntryContainer";
+import RenderListBody from "../../components/Create/subcomponents/RenderListBody";
 
 export default CreateThought = (props) => {
   const [loading, setLoading] = useState(false);

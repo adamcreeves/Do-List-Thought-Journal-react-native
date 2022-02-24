@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
-import { str015 } from "../../../../resources/strings";
-import { styles } from "../../../../styles";
+import { str015 } from "../../../../../resources/strings";
+import { styles } from "../../../../../styles";
 
 export default ListBody = ({ listWidth, item, setListItems, listItems }) => {
   const listBodyWidth = { width: listWidth };
@@ -19,7 +19,7 @@ export default ListBody = ({ listWidth, item, setListItems, listItems }) => {
         onPress={addToFilteredList}
         style={styles.listBodyButton}
       >
-        <Image source={require("../../../../../assets/deleteicon.png")} />
+        <Image source={require("../../../../../../assets/deleteicon.png")} />
       </TouchableOpacity>
     </View>
   );

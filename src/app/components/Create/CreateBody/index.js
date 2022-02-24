@@ -2,7 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import { str020, str021 } from "../../../../resources/strings";
 import { styles } from "../../../../styles";
-import ActionButton from "../ActionButton";
+import ActionButton from "../subcomponents/ActionButton";
 
 export default CreateBody = () => {
   return (

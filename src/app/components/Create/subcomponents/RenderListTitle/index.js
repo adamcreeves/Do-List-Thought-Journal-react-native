@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
-import { str006 } from "../../../../resources/strings";
-import { styles } from "../../../../styles";
+import { str006 } from "../../../../../resources/strings";
+import { styles } from "../../../../../styles";
 
 export default RenderListTitle = ({ listName, setListName }) => {
   const handlePress = () => setListName(str006);
@@ -11,7 +11,7 @@ export default RenderListTitle = ({ listName, setListName }) => {
       <TouchableOpacity style={styles.editTitleButton} onPress={handlePress}>
         <Image
           style={styles.editTitleIcon}
-          source={require("../../../../../assets/pencil.png")}
+          source={require("../../../../../../assets/pencil.png")}
         />
       </TouchableOpacity>
     </View>

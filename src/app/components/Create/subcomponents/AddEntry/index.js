@@ -1,7 +1,7 @@
 import React from "react";
 import { TextInput } from "react-native";
-import { gray, transparent } from "../../../../resources/colors";
-import { str014 } from "../../../../resources/strings";
+import { gray, transparent } from "../../../../../resources/colors";
+import { str014 } from "../../../../../resources/strings";
 
 export default AddEntry = ({
   inputStyle,

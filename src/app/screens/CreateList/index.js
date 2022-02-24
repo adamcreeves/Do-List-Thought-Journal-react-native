@@ -1,8 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { View } from "react-native";
-import AddEntryContainer from "../../components/Create/AddEntryContainer";
-import RenderListBody from "../../components/Create/RenderListBody";
+import AddEntryContainer from "../../components/Create/subcomponents/AddEntryContainer";
+import RenderListBody from "../../components/Create/subcomponents/RenderListBody";
 import Loading from "../../components/Loading";
 import {
   addListItem,
