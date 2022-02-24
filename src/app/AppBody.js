@@ -3,11 +3,11 @@ import { LogBox } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { useSelector } from "react-redux";
-import { customStackNavigator } from "../components/Utils";
-import Main from "../screens/Main";
-import Authentication from "../screens/Authentication";
-import CreateList from "../screens/CreateList";
-import CreateThought from "../screens/CreateThought";
+import { customStackNavigator } from "./components/Utils";
+import Main from "./screens/Main";
+import Authentication from "./screens/Authentication";
+import CreateList from "./screens/CreateList";
+import CreateThought from "./screens/CreateThought";
 import { str004, str019, str020, str021 } from "../resources/strings";
 
 LogBox.ignoreAllLogs();
