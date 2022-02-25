@@ -14,11 +14,9 @@ export default HomeBody = () => {
   const logout = () => {
     logoutUser(dispatch, setLoading);
   };
-
   if (loading) {
     return <Loading />;
   }
-
   return (
     <View style={styles.container}>
       <Logout

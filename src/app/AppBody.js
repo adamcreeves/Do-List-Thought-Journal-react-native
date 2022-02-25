@@ -1,5 +1,4 @@
 import React from "react";
-import { LogBox } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { useSelector } from "react-redux";
@@ -10,7 +9,6 @@ import CreateList from "./screens/CreateList";
 import CreateThought from "./screens/CreateThought";
 import { str004, str019, str020, str021 } from "../resources/strings";
 
-LogBox.ignoreAllLogs();
 const Stack = createStackNavigator();
 
 export default AppBody = () => {

@@ -32,13 +32,10 @@ export default CreateList = (props) => {
   const stateUser = props.extraData;
   const listDB = db.collection(`${stateUser?.uid}`);
   const navigation = useNavigation();
-
   const addTitleFunc = () =>
     addTitle(listEntryText, setListName, setListEntryText);
-
   const addTaskFunc = () =>
     addListItem(listEntryText, listItems, setListItems, setListEntryText);
-
   const submitList = () => {
     if (listName && listItems.length && listDB) {
       setLoading(true);
@@ -50,16 +47,13 @@ export default CreateList = (props) => {
       alert(str090);
     }
   };
-
   const mainViewStyle =
     listName || listItems.length
       ? styles.container
       : [styles.container, centerJustified];
-
   if (loading) {
     return <Loading />;
   }
-
   return (
     <View style={mainViewStyle}>
       <AddEntryContainer

@@ -31,13 +31,10 @@ export default CreateThought = (props) => {
   const stateUser = props.stateUser;
   const thoughtDB = db.collection(`${stateUser?.uid}`);
   const placeholder = thoughtName ? str092 : str093;
-
   const addTitleFunc = () =>
     addTitle(thoughtEntryText, setThoughtName, setThoughtEntryText);
-
   const addThoughtFunc = () =>
     addListItem(thoughtEntryText, thoughts, setThoughts, setThoughtEntryText);
-
   const submitThoughts = () => {
     if (thoughtName && thoughts.length && thoughtDB) {
       setLoading(true);
@@ -49,16 +46,13 @@ export default CreateThought = (props) => {
       alert(str091);
     }
   };
-
   const mainViewStyle =
     thoughtName || thoughts.length
       ? styles.container
       : [styles.container, centerJustified];
-
   if (loading) {
     return <Loading />;
   }
-
   return (
     <View style={mainViewStyle}>
       <AddEntryContainer

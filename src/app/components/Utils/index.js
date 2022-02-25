@@ -306,6 +306,54 @@ const logoutUser = (dispatch, setLoading) => {
   ]);
 };
 
+const handleRegisterNewUser = (
+  username,
+  email,
+  password,
+  confirmPassword,
+  location,
+  setLoading,
+  setUsername,
+  setEmail,
+  setPassword,
+  setConfirmPassword,
+  setLocation,
+  dispatch,
+  db
+) => {
+  if (username === str006) {
+    alert("You need to enter a username");
+  } else if (username.length < 6) {
+    alert("Your username must be 6 character or more");
+  } else if (email === str006) {
+    alert("You need to enter your email");
+  } else if (password.length < 8) {
+    alert("Your password needs to be 8 characters or more");
+  } else if (confirmPassword === str006) {
+    alert("You need to re enter your password");
+  } else if (password !== confirmPassword) {
+    alert("Your passwords don't match");
+  } else if (location === str006) {
+    alert("You have to enter a location");
+  } else {
+    setLoading(true);
+    registerNewUser(
+      username,
+      email,
+      password,
+      location,
+      setUsername,
+      setEmail,
+      setPassword,
+      setConfirmPassword,
+      setLocation,
+      dispatch,
+      db
+    );
+    setLoading(false);
+  }
+};
+
 export {
   createListButtonFunc,
   addListItem,
@@ -314,7 +362,7 @@ export {
   getQuote,
   customStackNavigator,
   centerJustified,
-  registerNewUser,
   loginUser,
   logoutUser,
+  handleRegisterNewUser,
 };

@@ -7,8 +7,6 @@ import HomeBody from "../../components/HomeBody";
 
 const Tab = createBottomTabNavigator();
 
-const user = false;
-
 export default Main = () => {
   return (
     <Tab.Navigator initialRouteName={str001} screenOptions={tabBarCustom}>

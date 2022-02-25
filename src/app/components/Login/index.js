@@ -24,11 +24,9 @@ export default Login = () => {
   const handleLogin = () => {
     loginUser(email, setEmail, password, setPassword, dispatch, setLoading);
   };
-
   if (loading) {
     return <Loading />;
   }
-
   return (
     <View style={styles.container}>
       <Text style={[styles.mainTitle, styles.extraMarginVertical]}>
